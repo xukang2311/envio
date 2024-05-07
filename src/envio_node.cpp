@@ -255,18 +255,21 @@ void process(){
                 est_fout.precision(19);
                 est_fout << last_img_t << " ";
                 est_fout.precision(19);
-                for (int i = 0; i < 4; i ++) est_fout << estimator.q_gb()(i) << " ";
+
                 for (int i = 0; i < 3; i ++) est_fout << estimator.p_gb()(i) << " ";
-                for (int i = 0; i < 3; i ++) est_fout << estimator.v_gb()(i) << " ";
-                for (int i = 0; i < 3; i ++) est_fout << estimator.ba()(i) << " ";
-                for (int i = 0; i < 3; i ++) est_fout << estimator.bg()(i) << " ";
-                for (int i = 0; i < 3; i ++) est_fout << estimator.std_q()(i) << " ";
-                for (int i = 0; i < 3; i ++) est_fout << estimator.std_p()(i) << " ";
-                for (int i = 0; i < 3; i ++) est_fout << estimator.std_v()(i) << " ";
-                for (int i = 0; i < 3; i ++) est_fout << estimator.std_ba()(i) << " ";
-                for (int i = 0; i < 3; i ++) est_fout << estimator.std_bg()(i) << " ";
-                est_fout << imu_processing_time << " ";
-                est_fout << vis_processing_time << std::endl;
+                for (int i = 0; i < 3; i ++) est_fout << estimator.q_gb()(i) << " ";
+                est_fout << estimator.q_gb()(3) <<std::endl;
+                // for (int i = 0; i < 3; i ++) est_fout << estimator.p_gb()(i) << " ";
+                // for (int i = 0; i < 3; i ++) est_fout << estimator.v_gb()(i) << " ";
+                // for (int i = 0; i < 3; i ++) est_fout << estimator.ba()(i) << " ";
+                // for (int i = 0; i < 3; i ++) est_fout << estimator.bg()(i) << " ";
+                // for (int i = 0; i < 3; i ++) est_fout << estimator.std_q()(i) << " ";
+                // for (int i = 0; i < 3; i ++) est_fout << estimator.std_p()(i) << " ";
+                // for (int i = 0; i < 3; i ++) est_fout << estimator.std_v()(i) << " ";
+                // for (int i = 0; i < 3; i ++) est_fout << estimator.std_ba()(i) << " ";
+                // for (int i = 0; i < 3; i ++) est_fout << estimator.std_bg()(i) << " ";
+                // est_fout << imu_processing_time << " ";
+                // est_fout << vis_processing_time << std::endl;
 
             }
             image_process_counter++;
@@ -277,7 +280,7 @@ void process(){
 
 int main(int argc, char **argv) {
 
-    est_fout.open("/home/nesl/Desktop/est_out.txt");
+    est_fout.open("/home/ubuntu/Desktop/hk_data/6.1_night/est_out.txt");
     ros::init(argc, argv, "envio_node");
     ros::NodeHandle n;
 

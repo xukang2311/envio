@@ -1,19 +1,36 @@
 <launch>
     <!--For the back-end -->
-    <arg name="calibration_file" default="$(find ensemble_vio)/config/euroc/camchain-imucam-euroc.yaml"/>
+    <arg name="calibration_file" default="$(find ensemble_vio)/config/euroc/hkdata.yaml"/>
+    <!-- <arg name="calibration_file" default="$(find ensemble_vio)/config/euroc/camchain-imucam-euroc.yaml"/> -->
+    <!-- <arg name="calibration_file" default="$(find ensemble_vio)/config/euroc/dvs346.yaml"/> -->
 
     <node pkg="ensemble_vio" type="envio_node" name="envio_node">
 
         <rosparam command="load" file="$(arg calibration_file)" />
 
         <!-- Remapping : put your topics -->
-        <remap from="/imu" to="/imu0"/>
+        <!-- <remap from="/imu" to="/imu0"/>
         <remap from="/left_image" to="/cam0/image_raw"/>
-        <remap from="/right_image" to="/cam1/image_raw"/>
+        <remap from="/right_image" to="/cam1/image_raw"/> -->
+
+        <remap from="/imu" to="/imu/data"/>
+        <remap from="/left_image" to="/camera_left/image_raw"/>
+        <remap from="/right_image" to="/camera_right/image_raw"/>
+
+
+        <!-- <remap from="/imu" to="/imu/data"/>
+        <remap from="/left_image" to="/DAVIS346_right/image"/>
+        <remap from="/right_image" to="/DAVIS346_left/image"/> -->
+        <!-- <remap from="/imu" to="/camera/imu"/>
+        <remap from="/left_image" to="/camera/infra1/image_rect_raw"/>
+        <remap from="/right_image" to="/camera/infra2/image_rect_raw"/> -->
+
 
         <!-- Vision processing parameters -->
         <param name="nx" value="25" type="int"/>
         <param name="ny" value="15" type="int"/>
+        <!-- <param name="nx" value="50" type="int"/>
+        <param name="ny" value="30" type="int"/> -->
         <param name="min_depth" value="0.5" type="double"/>
         <param name="max_depth" value="20" type="double"/>
         <param name="min_parallax" value="1" type="double"/>

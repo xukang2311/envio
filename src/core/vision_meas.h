@@ -113,6 +113,7 @@ class vision_meas {
     // Feature extraction threshold (8bit)
     double thr_feature_ = 0.9;
     double thr_gradmin_ = 1e-2;
+    //double thr_gradmin_ = 1e-4;
     double thr_gradmax_ = 400;
 
     // Current timestamp
